@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <% include ../partials/head %>
+</head>
+
+<body>
+
+  <div class="container-fluid p-0">
+
+    <% include ../partials/header %>
+
+
+    <div class="row" id="id-row">
+      <%if (notes.length > 0) {notes.forEach(function(note) { %>
+      <div class="card w-150 m-2 bg-warning border-danger note" data-id="<%= note._id %>">
+        <div class="card-body">
+          <div class="card-header bg-info">
+            <h5 class="card-title"><%= note.title %></h5>
+          </div>
+          <p class="card-text"><%= note.text %></p>
+        </div>
+        <div class="edit-btn">
+          <a href="/note/<%= note._id %>" class="btn btn-outline-danger btn-secondary mr-1">Edit</a>
+          <button type="submit" class="btn-delete-note btn btn-outline-danger btn-secondary ml-1"
+            data-id="<%= note._id %>">Delete</button>
+        </div>
+
+      </div>
+      <% })}; %>
+
+      <%if (lists.length > 0) {lists.forEach(function(list) { %>
+      <div class="card w-150 m-2 bg-warning border-danger list" data-id="<%= list._id %>">
+        <div class="card-header bg-info">
+          <%= list.themeList %>
+        </div>
+        <ul class="list-group list-group-flush">
+          <% list.itemsList.forEach(function(item) { %>
+          <li class="list-group-item <%=item.itemChecked ? "crossed":""%>"><%= item.itemText %></li>
+          <% }); %>
+        </ul>
+        <div class="edit-btn">
+          <a href="/list/<%= list._id %>" class="btn btn-outline-danger btn-secondary mr-1">Edit</a>
+          <button type="submit" class="btn-delete-list btn btn-outline-danger btn-secondary ml-1"
+            data-id="<%= list._id %>">Delete</button>
+        </div>
+      </div>
+      <% })}; %>
+
+    </div>
+
+  </div>
+
+
+
+  <% include ../partials/footer %>
+
+
+
+</body>
+
+</html>

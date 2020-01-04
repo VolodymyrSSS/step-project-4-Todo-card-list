@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <% include ../partials/head %>
+</head>
+
+<body>
+    <!-- <div class="modal fade" id="listModal" tabindex="-1" role="dialog" aria-labelledby="listModalTitle" aria-hidden="true"> -->
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content border-primary" data-id="<%= list._id %>">
+            <div class="modal-header bg-info">
+                <i class="fas fa-list fa-2x text-warning"></i>
+                <h5 class="modal-title text-dark ml-3" id="listModalTitle">List details</h5>
+                <a href="/" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </a>
+            </div>
+
+            <div class="modal-body bg-warning border-primary">
+                <label for="themeList" class="badge badge-primary text-wrap">Theme of list</label>
+                <input type="text" class="form-control" name="themeList" id="themeList" value="<%= list.themeList
+                %>" placeholder="Some theme" required>
+
+                <label for="itemsList" class="badge badge-info text-dark text-wrap">Items of list</label>
+                <div id="itemsList">
+                    <%list.itemsList.forEach((task, i)=>{%>
+                    <div class="input-group mb-2    ">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <input class="list-checkbox" type="checkbox" <%=task.itemChecked ? "checked":""%>
+                                    id="checkItem<%=i%>">
+                            </div>
+                        </div>
+                        <input type="text" class="form-control <%=task.itemChecked ? "crossed":""%>" id="textItem<%=i%>"
+                            value="<%=task.itemText%>">
+                    </div>
+
+                    <%})%>
+
+                </div>
+                <button type="button" class="btn btn-info" id="addItem">
+                    <i class="fas fa-plus"></i>
+                </button>
+                <button type="button" class="btn btn-info" id="delItem">
+                    <i class="fas fa-minus"></i>
+                </button>
+            </div>
+
+            <div class="modal-footer border-primary bg-info">
+                <button id="button-list-edit" type="button" id="editList" class="btn btn-outline-danger btn-success"
+                    data-id="<%= list._id %>">
+                    <i class="fas fa-check"></i>
+                    Save list
+                </button>
+
+            </div>
+
+        </div>
+    </div>
+    <!-- </div> -->
+
+    <% include ../partials/footer %>
+
+</body>
+
+</html>

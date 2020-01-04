@@ -1,0 +1,40 @@
+body{
+    background-color: lightcoral; 
+    height: 100%;
+}
+
+.edit-btn{
+    display: flex;
+    justify-content: center;
+}
+
+.card-body{
+    padding: 0;
+}
+
+.row {
+    align-items: flex-start;
+}
+
+.crossed{
+    text-decoration: line-through;
+}
+
+.card{
+    padding-bottom: 60px;
+}
+
+.edit-btn {
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    right: 0;
+}
+
+.card-text {
+    padding: 0 10px;
+}
+
+.footer {
+    padding: 20px 0;
+}

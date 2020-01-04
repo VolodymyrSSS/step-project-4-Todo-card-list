@@ -1,0 +1,23 @@
+<div class="row">
+    <% notes.forEach(function(note) { %>
+    <div class="card w-150 m-2 bg-warning border-danger note" data-id="<%= note._id %>">
+        <div class="card-body">
+            <h5 class="card-title"><%= note.themeNote %></h5>
+            <p class="card-text"><%= note.textNote %></p>
+        </div>
+    </div>
+    <% }); %>
+
+    <% lists.forEach(function(list) { %>
+    <div class="card w-150 m-2 bg-warning border-danger list" data-id="<%= list._id %>">
+        <div class="card-header">
+            <%= list.themeList %>
+        </div>
+        <ul class="list-group list-group-flush">
+            <% list.itemsList.forEach(function(item) { %>
+            <li class="list-group-item"><%= item.itemText %></li>
+            <% }); %>
+        </ul>
+    </div>
+    <% }); %>
+</div>
